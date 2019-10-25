@@ -109,6 +109,13 @@ func (am *AlertmanagerNotifier) createAlert(evalContext *alerting.EvalContext, m
 	}
 	tags["alertname"] = evalContext.Rule.Name
 	alertJSON.Set("labels", tags)
+
+	metrics := "xxx"
+	// for _, evt := range evalContext.EvalMatches {
+	// 	metrics += fmt.Sprintf("\n%s: %s", evt.Metric, evt.Value)
+	// }
+	alertJSON.Set("evalMatches", metrics)
+
 	return alertJSON
 }
 
